@@ -1,5 +1,5 @@
 import React from 'react';
-import FPOScreen from 'componentss/FPOScreen';
+import FPOScreen from 'components/FPOScreen';
 
 export default function App() {
   return <FPOScreen />;
