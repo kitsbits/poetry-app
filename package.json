@@ -8,9 +8,12 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "clear-cache": "watchman watch-del-all"
   },
   "dependencies": {
+    "husky": "^7.0.1",
+    "lint-staged": "^11.1.1",
     "react": "17.0.1",
     "react-native": "0.64.2",
     "react-redux": "^7.2.4",
@@ -40,5 +43,16 @@
   },
   "jest": {
     "preset": "react-native"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "yarn lint:fix",
+      "git add --force"
+    ]
   }
 }

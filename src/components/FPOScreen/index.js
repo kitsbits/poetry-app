@@ -8,7 +8,7 @@ export default function FPOScreen() {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'black',
+        backgroundColor: 'blue',
       }}
     >
       <Text style={{ color: 'white' }}>My Screen</Text>
