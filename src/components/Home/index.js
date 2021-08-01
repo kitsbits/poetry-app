@@ -1,4 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { doExample } from 'stores/data/actions';
+import { selectTest } from 'stores/data/selectors';
+
 import styled from 'styled-components/native';
 import { View, Text } from 'react-native';
 
@@ -12,6 +16,13 @@ const Button = styled.TouchableOpacity`
 `;
 
 export default function Home({ navigation }) {
+  const dispatch = useDispatch();
+  const test = useSelector(selectTest);
+
+  useEffect(() => {
+    dispatch(doExample());
+  }, [dispatch]);
+
   return (
     <View
       style={{
@@ -23,7 +34,7 @@ export default function Home({ navigation }) {
       }}
     >
       <Button onPress={navigation.openDrawer} />
-      <Text style={{ color: 'white' }}>Home</Text>
+      <Text style={{ color: 'white' }}>{test}</Text>
     </View>
   );
 }
