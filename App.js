@@ -1,8 +1,14 @@
+import 'react-native-gesture-handler';
 import React from 'react';
-import FPOScreen from 'components/FPOScreen';
+import { NavigationContainer } from '@react-navigation/native';
+import RootNavigator from 'navigators';
 
 export default function App() {
-  return <FPOScreen />;
+  return (
+    <NavigationContainer>
+      <RootNavigator />
+    </NavigationContainer>
+  );
 }
 
 // import {
