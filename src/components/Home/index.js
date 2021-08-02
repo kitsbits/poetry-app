@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { doExample } from 'stores/data/actions';
-import { selectTest } from 'stores/data/selectors';
+import { doExample, doSignUserIn } from 'stores/data/actions';
+import { selectTest, selectUser } from 'stores/data/selectors';
 
 import styled from 'styled-components/native';
 import { View, Text } from 'react-native';
@@ -15,9 +15,18 @@ const Button = styled.TouchableOpacity`
   background-color: grey;
 `;
 
+const SignInButton = styled.TouchableOpacity`
+  height: 55px;
+  width: 175px;
+  background-color: grey;
+`;
+
 export default function Home({ navigation }) {
   const dispatch = useDispatch();
   const test = useSelector(selectTest);
+  const user = useSelector(selectUser);
+  const signIn = () => dispatch(doSignUserIn());
+  console.log(user);
 
   useEffect(() => {
     dispatch(doExample());
@@ -35,6 +44,9 @@ export default function Home({ navigation }) {
     >
       <Button onPress={navigation.openDrawer} />
       <Text style={{ color: 'white' }}>{test}</Text>
+      <SignInButton onPress={signIn}>
+        <Text style={{ color: 'white' }}>Sign In</Text>
+      </SignInButton>
     </View>
   );
 }
